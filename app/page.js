@@ -14,30 +14,27 @@ import {
 export default function Generate() {
   const [text, setText] = useState('')
   const [flashcards, setFlashcards] = useState([])
-
   const handleSubmit = async () => {
-    const handleSubmit = async () => {
-      if (!text.trim()) {
-        alert('Please enter some text to generate flashcards.')
-        return
+    if (!text.trim()) {
+      alert('Please enter some text to generate flashcards.')
+      return
+    }
+  
+    try {
+      const response = await fetch('/api/generate', {
+        method: 'POST',
+        body: text,
+      })
+  
+      if (!response.ok) {
+        throw new Error('Failed to generate flashcards')
       }
-    
-      try {
-        const response = await fetch('/api/generate', {
-          method: 'POST',
-          body: text,
-        })
-    
-        if (!response.ok) {
-          throw new Error('Failed to generate flashcards')
-        }
-    
-        const data = await response.json()
-        setFlashcards(data)
-      } catch (error) {
-        console.error('Error generating flashcards:', error)
-        alert('An error occurred while generating flashcards. Please try again.')
-      }
+  
+      const data = await response.json()
+      setFlashcards(data)
+    } catch (error) {
+      console.error('Error generating flashcards:', error)
+      alert('An error occurred while generating flashcards. Please try again.')
     }
   }
 
@@ -67,29 +64,29 @@ export default function Generate() {
         </Button>
       </Box>
       
-      {
-        {lens(flashcards) > 0 && (
-          <Box sx={{ mt: 4 }}>
-            <Typography variant="h5" component="h2" gutterBottom>
-              Generated Flashcards
-            </Typography>
-            <Grid container spacing={2}>
-              {flashcards.map((flashcard, index) => (
-                <Grid item xs={12} sm={6} md={4} key={index}>
-                  <Card>
-                    <CardContent>
-                      <Typography variant="h6">Front:</Typography>
-                      <Typography>{flashcard.front}</Typography>
-                      <Typography variant="h6" sx={{ mt: 2 }}>Back:</Typography>
-                      <Typography>{flashcard.back}</Typography>
-                    </CardContent>
-                  </Card>
-                </Grid>
-              ))}
-            </Grid>
-          </Box>
-        )}
-      }
+
+      {flashcards.length > 0 && (
+        <Box sx={{ mt: 4 }}>
+          <Typography variant="h5" component="h2" gutterBottom>
+            Generated Flashcards
+          </Typography>
+          <Grid container spacing={2}>
+            {flashcards.map((flashcard, index) => (
+              <Grid item xs={12} sm={6} md={4} key={index}>
+                <Card>
+                  <CardContent>
+                    <Typography variant="h6">Front:</Typography>
+                    <Typography>{flashcard.front}</Typography>
+                    <Typography variant="h6" sx={{ mt: 2 }}>Back:</Typography>
+                    <Typography>{flashcard.back}</Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
+      )}
+      
     </Container>
   )
 }
