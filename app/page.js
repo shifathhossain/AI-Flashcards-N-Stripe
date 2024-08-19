@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <Box sx={{ background: 'linear-gradient(to bottom, #1f4037, #99f2c8)', minHeight: '100vh', paddingTop: '64px' }}>
       <Head>
-        <title>Flashcards SaaS</title>
+        <title>MemorAI</title>
         <meta name="description" content="Create your flashcards with AI" />
       </Head>
 

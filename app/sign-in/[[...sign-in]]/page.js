@@ -14,10 +14,19 @@ export default function SignInPage() {
             background: 'linear-gradient(135deg, #1f4037, #99f2c8)',
             py: 6
         }}>
-            <AppBar position="fixed" sx={{ backgroundColor: 'transparent', boxShadow: 'none', width: '100%' }}>
+            <AppBar position="fixed" sx={{ backgroundColor: 'transparent', boxShadow: 'none', width: '100%',  height: 'auto' }}>
+
                 <Toolbar variant="dense">
                     <Link href="http://localhost:3000/" passHref>
-                        <Typography variant="h6" component="a" sx={{ fontWeight: 'bold', color: '#fff', fontFamily: 'Lucida Handwriting', textDecoration: 'underline' }}>
+                        <Typography
+                            variant="h6"
+                            sx={{
+                                fontWeight: 'bold',
+                                color: '#fff',
+                                fontFamily: 'Lucida Handwriting',
+                                textDecoration: 'underline',
+                            }}
+                        >
                             MemorAI
                         </Typography>
                     </Link>
@@ -45,9 +54,9 @@ export default function SignInPage() {
                             variant="body1" 
                             color="textSecondary" 
                             sx={{ mb: 2 }} 
-                            fontStyle='italic' 
-                            >
-                            Join MemorAI and start creating your own flashcards effortlessly
+                            fontStyle='italic'
+                        >
+                            Join MemorAI and start creating your own flashcards effortlessly.
                         </Typography>
                         <SignIn />
                     </Box>

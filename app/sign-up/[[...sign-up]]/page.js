@@ -20,7 +20,6 @@ export default function SignUpPage() {
                     <Link href="/" passHref>
                         <Typography
                             variant="h6"
-                            component="a"
                             sx={{
                                 fontWeight: 'bold',
                                 color: '#fff',
