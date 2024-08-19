@@ -1,10 +1,10 @@
 'use client';
 
 import { Container, AppBar, Toolbar, Typography, Box, Paper } from "@mui/material";
-import { SignUp } from "@clerk/nextjs";
+import { SignIn } from "@clerk/nextjs";
 import Link from 'next/link';
 
-export default function SignUpPage() {
+export default function SignInPage() {
     return (
         <Box sx={{
             minHeight: '100vh',
@@ -17,7 +17,7 @@ export default function SignUpPage() {
             <AppBar position="fixed" sx={{ backgroundColor: 'transparent', boxShadow: 'none', width: '100%',  height: 'auto' }}>
 
                 <Toolbar variant="dense">
-                    <Link href="/" passHref>
+                    <Link href="http://localhost:3000/" passHref>
                         <Typography
                             variant="h6"
                             sx={{
@@ -58,7 +58,7 @@ export default function SignUpPage() {
                         >
                             Join MemorAI and start creating your own flashcards effortlessly.
                         </Typography>
-                        <SignUp />
+                        <SignIn />
                     </Box>
                 </Paper>
             </Container>
