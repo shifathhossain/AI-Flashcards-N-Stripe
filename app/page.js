@@ -2,6 +2,8 @@
 
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { AppBar, Typography, Toolbar, Button, Box, Container, Grid, Paper } from "@mui/material";
+import getStripe from "../utils/get-stripe.js";
+
 import Head from "next/head";
 
 export default function Home() {
